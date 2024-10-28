@@ -1,1 +1,1 @@
-je convertis le programme Pegse de swift en swiftui
+je convertis le programme Pegase de swift en swiftui
