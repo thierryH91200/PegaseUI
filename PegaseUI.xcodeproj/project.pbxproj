@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		03443F6A2CCD54B4009F6222 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 03443F692CCD54B4009F6222 /* Defaults */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		03443EB02CCD51EF009F6222 /* PegaseUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PegaseUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03443F6A2CCD54B4009F6222 /* Defaults in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +70,7 @@
 			);
 			name = PegaseUI;
 			packageProductDependencies = (
+				03443F692CCD54B4009F6222 /* Defaults */,
 			);
 			productName = PegaseUI;
 			productReference = 03443EB02CCD51EF009F6222 /* PegaseUI.app */;
@@ -91,9 +97,13 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = 03443EA72CCD51EF009F6222;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				03443F682CCD54B4009F6222 /* XCRemoteSwiftPackageReference "Defaults" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 03443EB12CCD51EF009F6222 /* Products */;
 			projectDirPath = "";
@@ -262,6 +272,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = perso.PegaseUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -289,6 +300,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = perso.PegaseUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -319,6 +331,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		03443F682CCD54B4009F6222 /* XCRemoteSwiftPackageReference "Defaults" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/Defaults";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		03443F692CCD54B4009F6222 /* Defaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 03443F682CCD54B4009F6222 /* XCRemoteSwiftPackageReference "Defaults" */;
+			productName = Defaults;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 03443EA82CCD51EF009F6222 /* Project object */;
 }
