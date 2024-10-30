@@ -11,30 +11,44 @@ struct ContentView100: View {
     @State private var selection1: String? = "John" // Sélection pour la première barre latérale
     @State private var selection2: String? = "Liste des transactions" // Sélection pour la deuxième barre latérale
     
+    @State private var isVisible: Bool = true
+    
+    
     var body: some View {
-        NavigationSplitView {
-            VStack(spacing: 0) { // Deux barres latérales indépendantes l'une de l'autre
-                Sidebar1A(selection1: $selection1)
-                Divider() // Un séparateur visuel entre les deux barres latérales
-                Sidebar2A(selection2 : $selection2)
+        HStack
+        {
+            NavigationSplitView {
+                VStack(spacing: 0)
+                { // Deux barres latérales indépendantes l'une de l'autre
+                    Sidebar1A(selection1: $selection1)
+                    Divider() // Un séparateur visuel entre les deux barres latérales
+                    Sidebar2A(selection2 : $selection2)
+                }
+                .frame(minWidth: 200, idealWidth: 250, maxWidth: 300) // Taille de la barre latérale
             }
-            .frame(minWidth: 200, idealWidth: 250, maxWidth: 300) // Taille de la barre latérale
-        } content : {
-            VStack {
-                if let selected2 = selection2 {
-                    switch selected2 {
+            detail :
+            {
+                VStack {
+                    if let selected2 = selection2 {
+                        switch selected2 {
                         case "Liste des transactions":
-                        ContentView10()
-                    default:
-                        Text("Content pour Sidebar 2 \(selected2)")
+                            ContentView10()
+                        default:
+                            Text("Content pour Sidebar 2 \(selected2)")
+                        }
                     }
                 }
             }
-        } detail: {
-            VStack {
-                if let selected1 = selection1 {
-                    DetailView1(selectedItem: selected1)
-                }
+            if isVisible
+            {
+                Spacer(minLength: 10)
+                OperationDialog()
+                    .frame (
+                        minWidth:100,
+                        idealWidth: 150,
+                        maxWidth: 200
+                    )
+                Spacer(minLength: 10)
             }
         }
         .toolbar {
@@ -44,23 +58,28 @@ struct ContentView100: View {
                 }) {
                     Label("Ajouter", systemImage: "plus")
                 }
-
+                
                 Button(action: {
                     print("Recherche effectuée")
                 }) {
                     Label("Rechercher", systemImage: "magnifyingglass")
                 }
-
+                
                 Spacer()
-
+                
                 Button(action: {
                     print("Paramètres ouverts")
                 }) {
                     Label("Paramètres", systemImage: "gear")
                 }
+                Toggle(isOn: $isVisible) {
+                    Image(systemName: "sidebar.trailing")
+                }
+                .toggleStyle(.button)
+                .keyboardShortcut("r", modifiers: .command)
+                
             }
         }
-
     }
 }
 
@@ -102,7 +121,6 @@ struct Sidebar1A: View {
                 }
             }
         }
-        
         .navigationTitle("Account")
         .listStyle(SidebarListStyle())
         .frame(maxHeight: 200) // Pour ajuster la hauteur de la première barre latérale
