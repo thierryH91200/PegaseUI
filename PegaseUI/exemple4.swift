@@ -13,31 +13,15 @@ struct ContentView100: View {
     
     @State private var isVisible: Bool = true
     
-    
     var body: some View {
         HStack
         {
             NavigationSplitView {
-                VStack(spacing: 0)
-                { // Deux barres latérales indépendantes l'une de l'autre
-                    Sidebar1A(selection1: $selection1)
-                    Divider() // Un séparateur visuel entre les deux barres latérales
-                    Sidebar2A(selection2 : $selection2)
-                }
-                .frame(minWidth: 200, idealWidth: 250, maxWidth: 300) // Taille de la barre latérale
+                SidebarContainer(selection1: $selection1, selection2: $selection2)
             }
             detail :
             {
-                VStack {
-                    if let selected2 = selection2 {
-                        switch selected2 {
-                        case "Liste des transactions":
-                            ContentView10()
-                        default:
-                            Text("Content pour Sidebar 2 \(selected2)")
-                        }
-                    }
-                }
+                DetailContainer(selection2: $selection2)
             }
             if isVisible
             {
@@ -80,6 +64,46 @@ struct ContentView100: View {
                 
             }
         }
+    }
+}
+
+struct SidebarContainer: View {
+    @Binding var selection1: String?
+    @Binding var selection2: String?
+    
+    var body: some View {
+        VStack(spacing: 0) {
+            Sidebar1A(selection1: $selection1)
+            Divider()
+            Sidebar2A(selection2: $selection2)
+        }
+        .frame(minWidth: 200, idealWidth: 250, maxWidth: 300)
+    }
+}
+
+struct DetailContainer: View {
+    @Binding var selection2: String?
+    
+    var body: some View {
+        VStack {
+            if let selected2 = selection2 {
+                switch selected2 {
+                case "Liste des transactions":
+                    ContentView10()
+                default:
+                    Text("Content pour Sidebar 2 \(selected2)")
+                }
+            }
+        }
+    }
+}
+
+struct SidebarDialogView: View {
+    var body: some View {
+        Spacer(minLength: 10)
+        OperationDialog()
+            .frame(minWidth: 100, idealWidth: 150, maxWidth: 200)
+        Spacer(minLength: 10)
     }
 }
 
@@ -194,8 +218,6 @@ struct Bouton: View {
         }
         .padding(.horizontal)
         .padding(.bottom, 10)
-        
     }
-    
 }
 
