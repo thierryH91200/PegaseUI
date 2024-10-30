@@ -6,11 +6,12 @@
 //
 
 import SwiftUI
+import Foundation
+import AppKit
 
 struct ContentView100: View {
-    @State private var selection1: String? = "John" // Sélection pour la première barre latérale
-    @State private var selection2: String? = "Liste des transactions" // Sélection pour la deuxième barre latérale
-    
+    @State private var selection1: String? = "John"
+    @State private var selection2: String? = localizeString("Liste des transactions")
     @State private var isVisible: Bool = true
     
     var body: some View {
@@ -21,17 +22,15 @@ struct ContentView100: View {
             }
             detail :
             {
-                DetailContainer(selection2: $selection2)
+                DetailContainer(selection2: $selection2, isVisible: $isVisible)
             }
             if isVisible
             {
                 Spacer(minLength: 10)
                 OperationDialog()
-                    .frame (
-                        minWidth:100,
-                        idealWidth: 150,
-                        maxWidth: 200
-                    )
+                    .frame( minWidth:100, idealWidth: 150, maxWidth: 200 )
+                    .transition(.move(edge: .trailing))
+                    .animation(.easeInOut, value: isVisible)
                 Spacer(minLength: 10)
             }
         }
@@ -61,7 +60,6 @@ struct ContentView100: View {
                 }
                 .toggleStyle(.button)
                 .keyboardShortcut("r", modifiers: .command)
-                
             }
         }
     }
@@ -83,13 +81,51 @@ struct SidebarContainer: View {
 
 struct DetailContainer: View {
     @Binding var selection2: String?
+    @Binding var isVisible: Bool
     
     var body: some View {
         VStack {
             if let selected2 = selection2 {
-                switch selected2 {
+                switch localizeString( selected2 ) {
+                    
+                    // Suivie Tresorerie
                 case "Liste des transactions":
-                    ContentView10()
+                    ListTransactions(isVisible: $isVisible)
+                case "Courbe de trésorerie":
+                    TreasuryCurveView(isVisible: $isVisible)
+                case "Site Web de la banque":
+                    BankWebsiteView(isVisible: $isVisible)
+                case "Rapprochement internet":
+                    InternetReconciliationView(isVisible: $isVisible)
+                case "Relevé bancaire":
+                    BankStatementView(isVisible: $isVisible)
+                case "Notes":
+                    NotesView(isVisible: $isVisible)
+                    
+                    // Rapports
+                case "Categorie Bar1":
+                    Text("Categorie Bar1")
+                case "Categorie Bar2":
+                    Text("Categorie Bar2")
+                case "Mode de paiement":
+                    Text("Mode de paiement")
+                case "Recette Depense Bar":
+                    Text("Recette Depense Bar")
+                case "Recette Depense Pie":
+                    Text("Recette Depense Pie")
+                case "Rubrique Bar":
+                    Text("Rubrique Bar")
+                case "Rubrique Pie":
+                    Text("Rubrique Pie")
+                    
+                    // Réference du compte
+                case "Identité":
+                    Text("Identity")
+                case "Echeancier":
+                    Text("Scheduler")
+                case "Réglage":
+                    Text("Réglage")
+                    
                 default:
                     Text("Content pour Sidebar 2 \(selected2)")
                 }
@@ -137,10 +173,9 @@ struct Sidebar1A: View {
             ForEach(accounts) { section in
                 Section(localizeString(section.name)) {
                     ForEach(section.children) { child in
-                        NavigationLink(value: child.name) {
-                            Label(localizeString(child.name), systemImage: child.icon).tag(child.name)
-                                .font(.title2)
-                        }
+                        Label(child.name, systemImage: child.icon).tag(child.name)
+                            .font(.title2)
+                        
                     }
                 }
             }
@@ -165,7 +200,7 @@ struct Sidebar2A: View {
             ForEach(datas) { section in
                 Section(localizeString(section.name)) {
                     ForEach(section.children) { child in
-                        Label(localizeString(child.name), systemImage: child.icon).tag(child.name)
+                        Label(child.name, systemImage: child.icon).tag(child.name)
                             .font(.title2)
                     }
                 }
@@ -177,13 +212,38 @@ struct Sidebar2A: View {
     }
 }
 
+struct ContentView1: View {
+    var nameView: String
+    
+    var body: some View {
+        Text("Hello, World!")
+    }
+}
+
+struct SidebarListView<T: Identifiable>: View {
+    let title: String
+    let items: [T]
+    @Binding var selection: String?
+    var labelProvider: (T) -> Label<Text, Image>
+    
+    var body: some View {
+        List(selection: $selection) {
+            ForEach(items) { item in
+                labelProvider(item)
+                    .tag(item.id)
+            }
+        }
+        .navigationTitle(title)
+        .listStyle(SidebarListStyle())
+    }
+}
+
 struct Bouton: View {
     
     @State private var selectedOption = ""
+    //    @State var  UUID : UUID
     
     var body: some View {
-        
-        let UUID : UUID = UUID()
         
         HStack {
             // Bouton "Moins"
@@ -210,7 +270,7 @@ struct Bouton: View {
             
             // Bouton Cadenas
             Button(action: {
-                print(UUID)
+                print("UUID")
             }) {
                 Image(systemName: "lock")
                     .font(.system(size: 16))

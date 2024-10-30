@@ -2,129 +2,27 @@
 
 
 // MARK: -  General
-"General.Account" = "Account";
-"General.Account2.Plural" = "%d accounts";
-"General.Account2.Singular" = "1 account";
-"General.Account2.Zero" = "0 account";
-"General.Amount" = "Amount";
-"General.Bank Statement" = "Bank Statement";
-"General.BankAccount.Plural" = "Bank accounts";
-"General.BankAccount.Singular" = "Bank account";
-"General.Cancel" = "Cancel";
-"General.Category" = "Category";
-"General.Date Operation" = "Date Transaction";
-"General.Date Pointage" = "Date Pointage";
-"General.Expenses" = "Expenses";
-"General.Identity" = "Identity";
-"General.Income" = "Income";
-"General.Libelle" = "Comment";
-"General.List Transactions" = "List transactions";
-"General.Mode Payment" = "Mode Payment";
-"General.Rubric" = "Rubric";
-"General.Scheduler" = "Scheduler";
-"General.Solde" = "Balance";
-"General.Statut" = "Statut";
-"General.Transaction" = "Transaction";
 
-// MARK: -  Chart
-"Chart.No_chart_Data_Available." = "No chart Data available.";
-"Graph.Expense" = "Expense";
-"Graph.Income" = "Income";
-"Graph.Rubrique" = "Rubric";
+"Liste des transactions" = "Transactions list";
 
-// MARK: -  Check
-"Check.Delete" = "Delete";
-"Check.InformativeText" = "Are you sure you would like to delete the check ?";
-"Check.MessageText" = "Delete the check ?";
+"Transactions list"       = "Liste des transactions";
+"Cash flow curve"         = "Courbe de trésorerie";
+"Bank website"            = "Site Web de la banque";
+"Internet reconciliation" = "Rapprochement internet";
+"Bank statement"          = "Relevé bancaire";
+"Notes"                   = "Notes";
 
-// MARK: -  Document
-"Document.Bank_Account" = "Bank account";
-"Document.Carte_de_crédit" = "Bank card";
-"Document.Current account" = "Current account";
-"Document.Especes" = "Cash account";
-"Document.IdName" = "Doe";
-"Document.IdPrenom" = "John";
-"Document.OpenProjectPanelMessage" = "Open Project";
-"Document.Save" = "Save";
+// Rapport
+"Category Bar1" = "Categorie Bar1";
+"Category Bar2" = "Categorie Bar2";
+"Payment method" = "Mode de paiement";
+"Income Expense Bar" = "Recette Depense Bar";
+"Income Expense Pie" = "Recette Depense Pie";
+"Section Bar" = "Rubrique Bar";
+"Section Pie" = "Rubrique Pie";
 
-// MARK: -  GroupeAccount
-"GroupeAccount.RemoveAlert.Cancel" = "Cancel";
-"GroupeAccount.RemoveAlert.Delete" = "Remove";
-"GroupeAccount.RemoveAlert.InformativeText" = "Are you sure you would like to delete this item ?";
-"GroupeAccount.RemoveAlert.MessageText" = "Supprimer cet élement";
+// Setings
+"Identity" = "Identité";
+"Schedule" = "Echeancier"; // (ou "Payment schedule" selon le contexte)
+"Settings" = "Réglage";
 
-// MARK: -  ListTransaction
-"ListTransaction.info" = "Expenses : %@ Incomes : %@ Total : %@";
-"ListTransaction.transaction.singular" = "%d transaction";
-"ListTransaction.transaction.plural" = "%d transactions";
-"ListTransaction.transaction.selectionnee.singular" = "%d selected transaction";
-"ListTransaction.transaction.selectionnee.plural" = "%d selected transactions";
-
-// MARK: -  Mode
-"Mode.Delete" = "Delete";
-"Mode.InformativeText" = "Are you sure you would like to delete the item ?";
-"Mode.MessageText" = "Delete this element";
-
-// MARK: -  PaymentMethod
-"PaymentMethod.Bank_Card" = "Bank Card";
-"PaymentMethod.Cash" = "Cash";
-"PaymentMethod.Check" = "Check";
-"PaymentMethod.Discount" = "Discount";
-"PaymentMethod.Prelevement" = "Prelevement";
-"PaymentMethod.RetraitEspeces" = "Retrait espéces";
-"PaymentMethod.Transfers" = "Transfers";
-
-// MARK: -  Rubric
-"Rubric.Delete" = "Delete";
-"Rubric.InformativeText" = "L'élement supprimé ne pourra pas être restauré. Il sera remplacé dans les opérations par la valeur par défaut";
-"Rubric.MessageText" = "Delete this element";
-
-// MARK: -  SimplifiedImport
-"SimplifiedImport.Menu.ignoreCol" = "Ignore_Column";
-"SimplifiedImport.Menu.dateTransaction" = "Transaction Date";
-"SimplifiedImport.Menu.datePointage" = "Date of Pointing";
-"SimplifiedImport.Menu.statut" = "Statut";
-"SimplifiedImport.Menu.paymentMethod" = "Payment method";
-"SimplifiedImport.Menu.bankStatement" = "Bank Statement";
-
-"SimplifiedImport.Menu.comment" = "Comment";
-"SimplifiedImport.Menu.rubric" = "Rubric";
-"SimplifiedImport.Menu.category" = "Category";
-"SimplifiedImport.Menu.amount" = "Amount";
-
-// MARK: -  RateConfigure
-"RateConfigure.detailText" = "We look forward to your Star and Pull Request to make Bergerac better and better : )\n⭐️⭐️⭐️⭐️⭐️?";
-"RateConfigure.ignoreButtonTitle" = "Perhaps later";
-"RateConfigure.likeButtonTitle" = "Star Now!";
-"RateConfigure.name" = "Love Bergerac?";
-
-// MARK: -  Statut
-"Statut.Planifie" = "Plannifie";
-"Statut.Engaged" = "Engaged";
-"Statut.Realise" = "Executed";
-
-// MARK: -  Transaction
-"Transaction.ModeCreation" = "Creative mode";
-"Transaction.ModeEdition" = "Editing mode";
-"Transaction.MultipleValue" = "Multiple value";
-"Transaction.NoTransfert" = "(no transfert)";
-"Transaction.operation" = "Transactions";
-
-// MARK: -  chooseColor
-"chooseColor.income" = "Income";
-"chooseColor.mode" = "Mode";
-"chooseColor.rubric" = "Rubric";
-"chooseColor.statut" = "Statut";
-"chooseColor.unie" = "United";
-
-// MARK: -  searchMenu
-"searchMenu.title.all" = "all";
-"searchMenu.title.category" = "Category";
-"searchMenu.title.comment" = "Comment";
-"searchMenu.title.rubric" = "Rubric";
-
-// MARK: -type freq
-"TypeFreq.day" = "day";
-"TypeFreq.week" = "week";
-"TypeFreq.month" = "month";
-"TypeFreq.year" = "year";

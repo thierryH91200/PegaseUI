@@ -13,24 +13,9 @@ struct PegaseUIApp: App {
     
     /// Legacy app delegate.
     @NSApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    
-    @State private var preferredColumn =  NavigationSplitViewColumn.detail
-
-    
+        
     var body: some Scene {
         WindowGroup {
-//            NavigationSplitView(preferredCompactColumn: $preferredColumn) {
-//                Color.yellow
-//            }
-//            content :
-//            {
-//                Color.red
-//            }
-//            detail:
-//            {
-//                Color.blue
-//            }
-
             ContentView100()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
