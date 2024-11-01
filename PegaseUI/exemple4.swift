@@ -83,54 +83,42 @@ struct DetailContainer: View {
     @Binding var selection2: String?
     @Binding var isVisible: Bool
     
+    let detailViews: [String: (Binding<Bool>) -> AnyView] = [
+        "Liste des transactions" : { isVisible in AnyView(ListTransactions(isVisible           : isVisible)) },
+        "Courbe de trésorerie"   : { isVisible in AnyView(TreasuryCurveView(isVisible          : isVisible)) },
+        "Site Web de la banque"  : { isVisible in AnyView(BankWebsiteView(isVisible            : isVisible)) },
+        "Rapprochement internet" : { isVisible in AnyView(InternetReconciliationView(isVisible : isVisible)) },
+        "Relevé bancaire"        : { isVisible in AnyView(BankStatementView(isVisible          : isVisible)) },
+        "Notes"                  : { isVisible in AnyView(NotesView(isVisible                  : isVisible)) },
+        
+        // Rapport
+        "Categorie Bar1"         : { isVisible in AnyView(CategorieBar1View(isVisible         : isVisible)) },
+        "Categorie Bar2"         : { isVisible in AnyView(CategorieBar2View(isVisible         : isVisible)) },
+        "Mode de paiement"       : { isVisible in AnyView(ModePaiementView(isVisible          : isVisible)) },
+        "Recette Depense Bar"    : {  isVisible in AnyView(RecetteDepenseBarView(isVisible    : isVisible)) },
+        "Recette Depense Pie"    : { isVisible in AnyView(RecetteDepensePieView(isVisible     : isVisible)) },
+        "Rubrique Bar"           : { isVisible in AnyView(RubriqueBarView(isVisible           : isVisible)) },
+        "Rubrique Pie"           : { isVisible in AnyView(RubriquePieView(isVisible           : isVisible)) },
+        
+        // Reglage
+        "Identité"               : {  isVisible in AnyView(IdentyView(isVisible               : isVisible)) },
+        "Echeancier"             : {  isVisible in AnyView(SchedulerView(isVisible            : isVisible)) },
+        "Réglage"                : {  isVisible in AnyView(SettingView(isVisible              : isVisible)) }
+    ]
+    
     var body: some View {
         VStack {
-            if let selected2 = selection2 {
-                switch localizeString( selected2 ) {
-                    
-                    // Suivie Tresorerie
-                case "Liste des transactions":
-                    ListTransactions(isVisible: $isVisible)
-                case "Courbe de trésorerie":
-                    TreasuryCurveView(isVisible: $isVisible)
-                case "Site Web de la banque":
-                    BankWebsiteView(isVisible: $isVisible)
-                case "Rapprochement internet":
-                    InternetReconciliationView(isVisible: $isVisible)
-                case "Relevé bancaire":
-                    BankStatementView(isVisible: $isVisible)
-                case "Notes":
-                    NotesView(isVisible: $isVisible)
-                    
-                    // Rapports
-                case "Categorie Bar1":
-                    Text("Categorie Bar1")
-                case "Categorie Bar2":
-                    Text("Categorie Bar2")
-                case "Mode de paiement":
-                    Text("Mode de paiement")
-                case "Recette Depense Bar":
-                    Text("Recette Depense Bar")
-                case "Recette Depense Pie":
-                    Text("Recette Depense Pie")
-                case "Rubrique Bar":
-                    Text("Rubrique Bar")
-                case "Rubrique Pie":
-                    Text("Rubrique Pie")
-                    
-                    // Réference du compte
-                case "Identité":
-                    Text("Identity")
-                case "Echeancier":
-                    Text("Scheduler")
-                case "Réglage":
-                    Text("Réglage")
-                    
-                default:
-                    Text("Content pour Sidebar 2 \(selected2)")
-                }
+            if let detailView = localizedDetailView(for: selection2) {
+                detailView($isVisible)
+            } else {
+                Text("Content pour Sidebar 2 \(selection2 ?? "")")
             }
         }
+    }
+    
+    func localizedDetailView(for selection: String?) -> ((Binding<Bool>) -> AnyView)? {
+        guard let selection = selection else { return nil }
+        return detailViews[localizeString(selection)]
     }
 }
 
@@ -143,46 +131,27 @@ struct SidebarDialogView: View {
     }
 }
 
-struct DetailView1: View {
-    var selectedItem: String
-    
-    var body: some View {
-        Text("Détails pour Sidebar 1 : \(selectedItem)")
-            .frame(maxWidth: 200)
-    }
-}
-
-struct DetailView2: View {
-    var selectedItem: String
-    
-    var body: some View {
-        Text("Détails pour Sidebar 2 : \(selectedItem)")
-            .frame(maxWidth: 200)
-    }
-}
-
 struct Sidebar1A: View {
     
     @Binding var selection1: String?
     
     var body: some View {
         
-        let accounts = Bundle.main.decode([Accounts].self, from: "Account.plist" )
+        let accounts = Bundle.main.decode([DatasCompte].self, from: "Account.plist" )
         
         List(selection: $selection1) {
             ForEach(accounts) { section in
                 Section(localizeString(section.name)) {
                     ForEach(section.children) { child in
                         Label(child.name, systemImage: child.icon).tag(child.name)
-                            .font(.title2)
-                        
+                            .font(.system(size: 12))
                     }
                 }
             }
         }
         .navigationTitle("Account")
         .listStyle(SidebarListStyle())
-        .frame(maxHeight: 200) // Pour ajuster la hauteur de la première barre latérale
+        .frame(maxHeight: 300) // Pour ajuster la hauteur de la première barre latérale
         
         Bouton()
     }
@@ -201,7 +170,7 @@ struct Sidebar2A: View {
                 Section(localizeString(section.name)) {
                     ForEach(section.children) { child in
                         Label(child.name, systemImage: child.icon).tag(child.name)
-                            .font(.title2)
+                            .font(.system(size: 12))
                     }
                 }
             }
@@ -209,14 +178,6 @@ struct Sidebar2A: View {
         .navigationTitle("Affichage")
         .listStyle(SidebarListStyle())
         .frame(maxHeight: .infinity) // Prend toute la place disponible
-    }
-}
-
-struct ContentView1: View {
-    var nameView: String
-    
-    var body: some View {
-        Text("Hello, World!")
     }
 }
 

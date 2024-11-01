@@ -60,11 +60,11 @@ class SplashScreenWindowController: NSWindowController {
         
         let dictionary = Bundle.main.infoDictionary!
         let version = dictionary["CFBundleShortVersionString"] as? String
-//        let build1 = dictionary["CFBundleVersion"] as? String
-        let build = dictionary["Test"] as? String
+        let build = dictionary["CFBundleVersion"] as? String
+      //  let build = dictionary["Test"] as? String
 
         if let cfBundleVersion = version {
-            applicationVersion = cfBundleVersion + "(" + build! + ")"
+            applicationVersion = cfBundleVersion + "(" + (build ?? "456") + ")"
         }
         recentDocumentViewControllers = getRecentDocumentViewControllers()
     }
@@ -154,7 +154,7 @@ class SplashScreenWindowController: NSWindowController {
     
     // MARK: - Private methods
     private func getRecentDocumentViewControllers() -> [SplashScreenRecentDocumentViewController] {
-        let projectExtension = getBundleExtension()     //"sqlite"           //TulsiProjectDocument.getTulsiBundleExtension()
+        let projectExtension = "sqlite" // getBundleExtension()     //"sqlite"      //TulsiProjectDocument.getTulsiBundleExtension()
         let documentController = NSDocumentController.shared
         
         var recentDocumentViewControllers = [SplashScreenRecentDocumentViewController]()

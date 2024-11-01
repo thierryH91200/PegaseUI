@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct InternetReconciliationView: View {
     
     @Binding var isVisible: Bool

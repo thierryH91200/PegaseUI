@@ -3,10 +3,11 @@
 import AppKit
 
 
-struct Accounts : Codable, Identifiable {
 
+struct DatasCompte : Codable, Identifiable {
+
+    var type: String
     var name: String
-    var icon: String
     var id: UUID
 
     var children: [DefAccount]
@@ -14,19 +15,21 @@ struct Accounts : Codable, Identifiable {
 
 struct DefAccount : Codable, Hashable, Identifiable {
 
+    var type: String
     var name: String
     var surName: String
-
     var numAccount: String
     var icon: String
     var solde: String
-
+    
     var id: UUID
 }
 
 struct Datas : Codable, Identifiable {
 
+    var type: String
     var name: String
+    var surName: String
     var icon: String
     var id: UUID
 
@@ -42,23 +45,10 @@ struct Children : Codable, Hashable, Identifiable {
     var id: UUID
 }
 
-//extension Encodable {
-//    func encoded() throws -> Data {
-//        return try PropertyListEncoder().encode(self)
-//    }
-//}
-
-//extension Data {
-//    func decoded<T: Decodable>() throws -> T {
-//        return try PropertyListDecoder().decode(T.self, from: self)
-//    }
-//}
-
 protocol AnyDecoder {
     func decode<T: Decodable>(_ type: T.Type, from data: Data) throws -> T
 }
 
-//extension JSONDecoder: AnyDecoder {}
 extension PropertyListDecoder: AnyDecoder {}
 
 extension Bundle {
@@ -78,3 +68,17 @@ extension Bundle {
         return loaded
     }
 }
+
+//extension JSONDecoder: AnyDecoder {}
+//
+//extension Encodable {
+//    func encoded() throws -> Data {
+//        return try PropertyListEncoder().encode(self)
+//    }
+//}
+
+//extension Data {
+//    func decoded<T: Decodable>() throws -> T {
+//        return try PropertyListDecoder().decode(T.self, from: self)
+//    }
+//}

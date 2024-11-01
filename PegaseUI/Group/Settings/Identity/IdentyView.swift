@@ -1,5 +1,5 @@
 //
-//  CategorieBar1View.swift
+//  IdentyView.swift
 //  PegaseUI
 //
 //  Created by Thierry hentic on 31/10/2024.
@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct CategorieBar1View: View {
+struct IdentyView: View {
     
     @Binding var isVisible: Bool
     
     var body: some View {
-        Text("CategorieBar1View")
+        Text("IdentyView")
             .font(.title)
             .padding()
             .task {

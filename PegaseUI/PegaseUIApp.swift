@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct PegaseUIApp: App {
-    let persistenceController = PersistenceController.shared
+//    let persistenceController = PersistenceController.shared
     
     /// Legacy app delegate.
     @NSApplicationDelegateAdaptor(AppDelegate.self) var delegate
@@ -17,17 +17,24 @@ struct PegaseUIApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView100()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+//            ContentView100()
+//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }
 
 class AppDelegate: NSObject, NSApplicationDelegate {
     
+    var splashScreenWindowController: SplashScreenWindowController! = nil
+
+    
     func applicationWillFinishLaunching(_ notification: Notification) {
     }
     
     func applicationDidFinishLaunching(_ notification: Notification) {
+
+        splashScreenWindowController = SplashScreenWindowController()
+        splashScreenWindowController.showWindow(self)
     }
     
     func applicationShouldTerminateAfterLastWindowClosed (_ sender: NSApplication) -> Bool {
@@ -51,6 +58,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.makeKeyAndOrderFront(self)
         return true
     }
+    
+    func applicationShouldHandleReopen(_: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        if flag == true {
+            return false
+        }
+        splashScreenWindowController = SplashScreenWindowController()
+        //            _ = self.splashScreenWindowController
+        //            if let splashScreenWindowController = self.splashScreenWindowController {
+        splashScreenWindowController.showWindow(self)
+        //    }
+        return false
+    }
+
 
 }
 
