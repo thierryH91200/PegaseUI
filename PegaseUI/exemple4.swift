@@ -155,6 +155,8 @@ struct Sidebar1A: View {
         
         Bouton()
     }
+    
+    
 }
 
 // Vue pour l'en-tête de section
@@ -163,36 +165,29 @@ struct SectionHeader: View {
     
     var body: some View {
         
-        let balance : Double = calcBalance(section: section)
-
+        let balance: Double = section.children.reduce(0) { $0 + $1.solde }
+        
         HStack {
             let count = section.children.count
-
+            
             Image(systemName: "folder.fill")
                 .foregroundColor(.orange)
                 .font(.system(size: 36)) // Ajustez la taille ici
-
+            
             VStack {
                 Text(section.type)
                     .font(.headline)
-                Text(String(count) + " comptes")
+                Text("\(count) comptes")
                     .foregroundColor(.gray)
             }
             Spacer()
-            Text(String(balance) + " €")
+            Text("\(balance, specifier: "%.2f") €")
                 .font(.headline)
                 .foregroundColor(.green)
                 .frame(width: 80, alignment: .trailing) // Aligne à droite avec une largeur fixe
-
+            
         }
         .padding(.bottom, 5)
-    }
-    func calcBalance(section : DatasCompte) -> Double {
-        var balance : Double = 0.0
-        for i in 0..<section.children.count {
-            balance = balance + section.children[i].solde
-        }
-        return balance
     }
 }
 

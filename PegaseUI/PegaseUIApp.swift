@@ -17,6 +17,7 @@ struct PegaseUIApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView100()
+                .dynamicTypeSize(.medium)
 //            ContentView100()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
