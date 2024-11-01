@@ -141,21 +141,92 @@ struct Sidebar1A: View {
         
         List(selection: $selection1) {
             ForEach(accounts) { section in
-                Section(localizeString(section.name)) {
+                Section(header: SectionHeader(section: section) ) {
                     ForEach(section.children) { child in
-                        Label(child.name, systemImage: child.icon).tag(child.name)
-                            .font(.system(size: 12))
+                        AccountRow(account: child)
+                            .tag(child.name)
                     }
                 }
             }
         }
         .navigationTitle("Account")
         .listStyle(SidebarListStyle())
-        .frame(maxHeight: 300) // Pour ajuster la hauteur de la première barre latérale
+        .frame(maxHeight: 500) // Pour ajuster la hauteur de la première barre latérale
         
         Bouton()
     }
 }
+
+// Vue pour l'en-tête de section
+struct SectionHeader: View {
+    let section: DatasCompte
+    
+    var body: some View {
+        
+        let balance : Double = calcBalance(section: section)
+
+        HStack {
+            let count = section.children.count
+
+            Image(systemName: "folder.fill")
+                .foregroundColor(.orange)
+                .font(.system(size: 36)) // Ajustez la taille ici
+
+            VStack {
+                Text(section.type)
+                    .font(.headline)
+                Text(String(count) + " comptes")
+                    .foregroundColor(.gray)
+            }
+            Spacer()
+            Text(String(balance) + " €")
+                .font(.headline)
+                .foregroundColor(.green)
+                .frame(width: 80, alignment: .trailing) // Aligne à droite avec une largeur fixe
+
+        }
+        .padding(.bottom, 5)
+    }
+    func calcBalance(section : DatasCompte) -> Double {
+        var balance : Double = 0.0
+        for i in 0..<section.children.count {
+            balance = balance + section.children[i].solde
+        }
+        return balance
+    }
+}
+
+// Vue pour chaque ligne de compte
+struct AccountRow: View {
+    let account: DefAccount
+    
+    var body: some View {
+        HStack {
+            Image(systemName: account.icon)
+                .foregroundColor(.blue)
+                .font(.system(size: 18)) // Ajustez la taille ici
+
+            VStack(alignment: .leading) {
+                Text(account.type)
+                    .font(.body)
+                    .foregroundColor(.black)
+                Text(account.name + " " + account.surName)
+                    .font(.caption)
+                    .foregroundColor(.gray)
+                Text(account.numAccount)
+                    .font(.caption2)
+                    .foregroundColor(.gray)
+            }
+            Spacer()
+            Text( String(account.solde) + " €")
+                .font(.caption)
+                .foregroundColor(.green)
+                .frame(width: 80, alignment: .trailing) // Aligne à droite avec la même largeur fixe
+        }
+    }
+}
+
+
 
 struct Sidebar2A: View {
     

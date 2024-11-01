@@ -20,16 +20,14 @@ struct DefAccount : Codable, Hashable, Identifiable {
     var surName: String
     var numAccount: String
     var icon: String
-    var solde: String
+    var solde: Double
     
     var id: UUID
 }
 
 struct Datas : Codable, Identifiable {
 
-    var type: String
     var name: String
-    var surName: String
     var icon: String
     var id: UUID
 

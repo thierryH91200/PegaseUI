@@ -17,6 +17,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		03385D1C2CD4EF4B00F959D0 /* Doc */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Doc;
+			sourceTree = "<group>";
+		};
 		03443EB22CCD51EF009F6222 /* PegaseUI */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = PegaseUI;
@@ -39,6 +44,7 @@
 		03443EA72CCD51EF009F6222 = {
 			isa = PBXGroup;
 			children = (
+				03385D1C2CD4EF4B00F959D0 /* Doc */,
 				037B8EC12CD2306F0024BB6A /* README.md */,
 				03443EB22CCD51EF009F6222 /* PegaseUI */,
 				03443EB12CCD51EF009F6222 /* Products */,
@@ -70,6 +76,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				03385D1C2CD4EF4B00F959D0 /* Doc */,
 				03443EB22CCD51EF009F6222 /* PegaseUI */,
 			);
 			name = PegaseUI;

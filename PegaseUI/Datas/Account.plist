@@ -21,9 +21,9 @@
 				<key>numAccount</key>
 				<string>00045700E</string>
 				<key>icon</key>
-				<string>note</string>
+				<string>building.columns</string>
 				<key>solde</key>
-				<string>2345</string>
+				<integer>1000</integer>
 				<key>id</key>
 				<string>0B3A2968-641F-4CBA-8C51-29F74864F86E</string>
 			</dict>
@@ -37,9 +37,9 @@
 				<key>numAccount</key>
 				<string>00045701F</string>
 				<key>icon</key>
-				<string>note</string>
+				<string>creditcard</string>
 				<key>solde</key>
-				<string>1234</string>
+				<integer>1234</integer>
 				<key>id</key>
 				<string>DAD9E0B1-8B9A-47F4-A161-A97B50FAE06D</string>
 			</dict>
@@ -64,9 +64,9 @@
 				<key>numAccount</key>
 				<string>00045700E</string>
 				<key>icon</key>
-				<string>note</string>
+				<string>building.columns</string>
 				<key>solde</key>
-				<string>2345</string>
+				<integer>2000</integer>
 				<key>id</key>
 				<string>E892ADD9-B6A6-4AB2-B3E9-56F8593A2EAB</string>
 			</dict>
@@ -80,9 +80,9 @@
 				<key>numAccount</key>
 				<string>00045701F</string>
 				<key>icon</key>
-				<string>note</string>
+				<string>building.columns</string>
 				<key>solde</key>
-				<string>1234</string>
+				<integer>1234</integer>
 				<key>id</key>
 				<string>1BC26392-A335-4371-A89D-B7C0315EFF02</string>
 			</dict>
@@ -91,7 +91,7 @@
 	<dict>
 		<key>type</key>
 		<string>Carte bancaire</string>
-		<key>icon</key>
+		<key>name</key>
 		<string>note</string>
 		<key>id</key>
 		<string>989B63AA-6F3E-4A55-B88F-507BFC9B594A</string>
@@ -107,9 +107,9 @@
 				<key>numAccount</key>
 				<string>00045700E</string>
 				<key>icon</key>
-				<string>note</string>
+				<string>building.columns</string>
 				<key>solde</key>
-				<string>2345</string>
+				<integer>2000</integer>
 				<key>id</key>
 				<string>06815199-298C-47F0-9812-A8DF1AB82630</string>
 			</dict>
@@ -123,9 +123,9 @@
 				<key>numAccount</key>
 				<string>00045701F</string>
 				<key>icon</key>
-				<string>note</string>
+				<string>creditcard</string>
 				<key>solde</key>
-				<string>1234</string>
+				<integer>1000</integer>
 				<key>id</key>
 				<string>0C4A3AD7-899E-43FB-9A9A-A845BA2056FD</string>
 			</dict>
